@@ -7,21 +7,26 @@ using BookShelf.db.Query;
 
 namespace BookShelf
 {
-    
+
     public partial class Insert : Form
     {
         SQLCon cnn = new SQLCon();
-
+        Book book = new Book();
+        Magazine magazine = new Magazine();
         public Insert(Book book)
         {
+            this.book = book;
             InitializeComponent();
             cnn.openConnection();
+            fillBook();
             magazinePanel.Visible = true;
         }
         public Insert(Magazine magazine)
         {
+            this.magazine = magazine;
             InitializeComponent();
             cnn.openConnection();
+            fillMagazine();
             bookPanel.Visible = false;
         }
 
@@ -42,13 +47,41 @@ namespace BookShelf
 
         private void BookAddButton_Click(object sender, System.EventArgs e)
         {
-            new QueryManager(cnn).Insert(new Book(BookAuthor.Text, BookName.Text, int.Parse(BookPages.Text), int.Parse(BookYear.Text), double.Parse(BookPrice.Text), BookGenre.Text));
+            if (BookAddButton.Text == "Update")
+            {
+                book = new Book(book.id, BookAuthor.Text, BookName.Text, int.Parse(BookPages.Text), int.Parse(BookYear.Text),
+                    double.Parse(BookPrice.Text), BookGenre.Text);
+                new QueryManager(cnn).Update(book);
+
+            }
+            else
+            {
+                book = new Book(BookAuthor.Text, BookName.Text, int.Parse(BookPages.Text), int.Parse(BookYear.Text),
+                    double.Parse(BookPrice.Text), BookGenre.Text);
+                new QueryManager(cnn).Insert(book);
+                
+            }
+            new BookShelf().ShowPublications();
             Close();
         }
 
         private void MagazineAddButton_Click(object sender, EventArgs e)
         {
-            new QueryManager(cnn).Insert(new Magazine(MagazineAuthor.Text, MagazineName.Text, int.Parse(MagazinePages.Text), int.Parse(MagazineYear.Text), double.Parse(MagazinePrice.Text), int.Parse(MagazineFrequency.Text), int.Parse(MagazineNumber.Text)));
+            if (MagazineAddButton.Text == "Update")
+            {
+                magazine = new Magazine(magazine.id, MagazineAuthor.Text, MagazineName.Text, int.Parse(MagazinePages.Text),
+                    int.Parse(MagazineYear.Text), double.Parse(MagazinePrice.Text), int.Parse(MagazineFrequency.Text),
+                    int.Parse(MagazineNumber.Text));
+                new QueryManager(cnn).Update(magazine);
+            }
+            else
+            {
+                magazine = new Magazine(MagazineAuthor.Text, MagazineName.Text, int.Parse(MagazinePages.Text),
+                    int.Parse(MagazineYear.Text), double.Parse(MagazinePrice.Text), int.Parse(MagazineFrequency.Text),
+                    int.Parse(MagazineNumber.Text));
+                new QueryManager(cnn).Insert(magazine);
+
+            }
             Close();
         }
 
@@ -63,6 +96,29 @@ namespace BookShelf
             AutoValidate = AutoValidate.Disable;
             Close();
         }
+        private void fillMagazine()
+        {
+            MagazineAuthor.Text = magazine.author;
+            MagazineName.Text = magazine.name;
+            MagazinePrice.Text = magazine.price.ToString();
+            MagazinePages.Text = magazine.numberOfPages.ToString();
+            MagazineYear.Text = magazine.year.ToString();
+            MagazineFrequency.Text = magazine.frequency.ToString();
+            MagazineNumber.Text = magazine.number.ToString();
+            MagazineAddButton.Text = "Update";
+        }
+        private void fillBook()
+        {
+            BookAuthor.Text = book.author;
+            BookName.Text = book.name;
+            BookPrice.Text = book.price.ToString();
+            BookPages.Text = book.numberOfPages.ToString();
+            BookYear.Text = book.year.ToString();
+            BookGenre.Text = book.genre;
+            BookAddButton.Text = "Update";
+
+        }
+
         //
         // Book Insert Validation
         //

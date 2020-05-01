@@ -81,6 +81,33 @@ namespace BookShelf.db.Query
             }
         }
 
+        public void Update(Book book)
+        {
+            string[] queries = new string[] {
+                String.Format("UPDATE \"Publication\" SET author='{0}', name='{1}', year={2}, pages={3}, price={4} WHERE id={5};", book.author, book.name, book.year, book.numberOfPages, book.price.ToString().Replace(',', '.'), book.id),
+                String.Format("UPDATE \"Book\" SET genre='{1}' WHERE id={0};", book.id, book.genre)};
+            foreach (var query in queries)
+            {
+                sqlCommand = new NpgsqlCommand(query, SQLCon.GetNpgsqlConnection());
+                NpgsqlDataReader rr = sqlCommand.ExecuteReader();
+                rr.Close();
+            }
+
+        }
+
+        public void Update(Magazine magazine)
+        {
+            string[] queries = new string[] {
+                String.Format("UPDATE \"Publication\" SET author='{0}', name='{1}', year={2}, pages={3}, price={4} WHERE id = {5};", magazine.author, magazine.name, magazine.year, magazine.numberOfPages, magazine.price.ToString().Replace(',', '.'), magazine.id),
+                String.Format("UPDATE \"Magazine\" SET number={1}, frequency={2} WHERE id={0};", magazine.id, magazine.number, magazine.frequency)};
+            foreach (var query in queries)
+            {
+                sqlCommand = new NpgsqlCommand(query, SQLCon.GetNpgsqlConnection());
+                NpgsqlDataReader rr = sqlCommand.ExecuteReader();
+                rr.Close();
+            }
+        }
+
         public void Insert(Book book)
         {
             string[] queries = new string[] {

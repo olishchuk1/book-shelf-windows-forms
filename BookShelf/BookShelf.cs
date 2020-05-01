@@ -67,7 +67,7 @@ namespace BookShelf
             preinsertform.Show();
         }
 
-        private void ShowPublications()
+        public void ShowPublications()
         {
             dataGridView1.Columns["Number"].Visible = true;
             dataGridView1.Columns["Frequency"].Visible = true;

@@ -31,28 +31,6 @@ namespace BookShelf
         private void InitializeComponent()
         {
             this.magazinePanel = new System.Windows.Forms.Panel();
-            this.bookPanel = new System.Windows.Forms.Panel();
-            this.BookGenreValidation = new System.Windows.Forms.Label();
-            this.BookPriceValidation = new System.Windows.Forms.Label();
-            this.BookPagesValidation = new System.Windows.Forms.Label();
-            this.BookYearValidation = new System.Windows.Forms.Label();
-            this.BookNameValidation = new System.Windows.Forms.Label();
-            this.BookAuthorValidation = new System.Windows.Forms.Label();
-            this.BookLabel = new System.Windows.Forms.Label();
-            this.BookAddButton = new System.Windows.Forms.Button();
-            this.BookCancel = new System.Windows.Forms.Button();
-            this.BookGenreLabel = new System.Windows.Forms.Label();
-            this.BookPriceLabel = new System.Windows.Forms.Label();
-            this.BookYearLabel = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.BookNameLabel = new System.Windows.Forms.Label();
-            this.BookAuthorLabel = new System.Windows.Forms.Label();
-            this.BookGenre = new System.Windows.Forms.TextBox();
-            this.BookPrice = new System.Windows.Forms.TextBox();
-            this.BookYear = new System.Windows.Forms.TextBox();
-            this.BookPages = new System.Windows.Forms.TextBox();
-            this.BookName = new System.Windows.Forms.TextBox();
-            this.BookAuthor = new System.Windows.Forms.TextBox();
             this.MagazineFrequencyValidation = new System.Windows.Forms.Label();
             this.MagazinePriceValidation = new System.Windows.Forms.Label();
             this.MagazineYearValidation = new System.Windows.Forms.Label();
@@ -77,6 +55,28 @@ namespace BookShelf
             this.MagazineName = new System.Windows.Forms.TextBox();
             this.MagazineAuthor = new System.Windows.Forms.TextBox();
             this.MagazineNumberValidation = new System.Windows.Forms.Label();
+            this.bookPanel = new System.Windows.Forms.Panel();
+            this.BookGenreValidation = new System.Windows.Forms.Label();
+            this.BookCancel = new System.Windows.Forms.Button();
+            this.BookPriceValidation = new System.Windows.Forms.Label();
+            this.BookPagesValidation = new System.Windows.Forms.Label();
+            this.BookYearValidation = new System.Windows.Forms.Label();
+            this.BookNameValidation = new System.Windows.Forms.Label();
+            this.BookAuthorValidation = new System.Windows.Forms.Label();
+            this.BookLabel = new System.Windows.Forms.Label();
+            this.BookAddButton = new System.Windows.Forms.Button();
+            this.BookGenreLabel = new System.Windows.Forms.Label();
+            this.BookPriceLabel = new System.Windows.Forms.Label();
+            this.BookYearLabel = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.BookNameLabel = new System.Windows.Forms.Label();
+            this.BookAuthorLabel = new System.Windows.Forms.Label();
+            this.BookGenre = new System.Windows.Forms.TextBox();
+            this.BookPrice = new System.Windows.Forms.TextBox();
+            this.BookYear = new System.Windows.Forms.TextBox();
+            this.BookPages = new System.Windows.Forms.TextBox();
+            this.BookName = new System.Windows.Forms.TextBox();
+            this.BookAuthor = new System.Windows.Forms.TextBox();
             this.magazinePanel.SuspendLayout();
             this.bookPanel.SuspendLayout();
             this.SuspendLayout();
@@ -114,267 +114,6 @@ namespace BookShelf
             this.magazinePanel.Name = "magazinePanel";
             this.magazinePanel.Size = new System.Drawing.Size(566, 561);
             this.magazinePanel.TabIndex = 0;
-            // 
-            // bookPanel
-            // 
-            this.bookPanel.CausesValidation = false;
-            this.bookPanel.Controls.Add(this.BookGenreValidation);
-            this.bookPanel.Controls.Add(this.BookCancel);
-            this.bookPanel.Controls.Add(this.BookPriceValidation);
-            this.bookPanel.Controls.Add(this.BookPagesValidation);
-            this.bookPanel.Controls.Add(this.BookYearValidation);
-            this.bookPanel.Controls.Add(this.BookNameValidation);
-            this.bookPanel.Controls.Add(this.BookAuthorValidation);
-            this.bookPanel.Controls.Add(this.BookLabel);
-            this.bookPanel.Controls.Add(this.BookAddButton);
-            this.bookPanel.Controls.Add(this.BookGenreLabel);
-            this.bookPanel.Controls.Add(this.BookPriceLabel);
-            this.bookPanel.Controls.Add(this.BookYearLabel);
-            this.bookPanel.Controls.Add(this.label7);
-            this.bookPanel.Controls.Add(this.BookNameLabel);
-            this.bookPanel.Controls.Add(this.BookAuthorLabel);
-            this.bookPanel.Controls.Add(this.BookGenre);
-            this.bookPanel.Controls.Add(this.BookPrice);
-            this.bookPanel.Controls.Add(this.BookYear);
-            this.bookPanel.Controls.Add(this.BookPages);
-            this.bookPanel.Controls.Add(this.BookName);
-            this.bookPanel.Controls.Add(this.BookAuthor);
-            this.bookPanel.Location = new System.Drawing.Point(146, 15);
-            this.bookPanel.Name = "bookPanel";
-            this.bookPanel.Size = new System.Drawing.Size(566, 561);
-            this.bookPanel.TabIndex = 18;
-            // 
-            // BookGenreValidation
-            // 
-            this.BookGenreValidation.AutoSize = true;
-            this.BookGenreValidation.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.BookGenreValidation.Location = new System.Drawing.Point(291, 341);
-            this.BookGenreValidation.Name = "BookGenreValidation";
-            this.BookGenreValidation.Size = new System.Drawing.Size(218, 17);
-            this.BookGenreValidation.TabIndex = 24;
-            this.BookGenreValidation.Text = "the length should be less than 15";
-            this.BookGenreValidation.Visible = false;
-            // 
-            // BookPriceValidation
-            // 
-            this.BookPriceValidation.AutoSize = true;
-            this.BookPriceValidation.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.BookPriceValidation.Location = new System.Drawing.Point(295, 289);
-            this.BookPriceValidation.Name = "BookPriceValidation";
-            this.BookPriceValidation.Size = new System.Drawing.Size(193, 17);
-            this.BookPriceValidation.TabIndex = 23;
-            this.BookPriceValidation.Text = "the price should be a number";
-            this.BookPriceValidation.Visible = false;
-            // 
-            // BookPagesValidation
-            // 
-            this.BookPagesValidation.AutoSize = true;
-            this.BookPagesValidation.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.BookPagesValidation.Location = new System.Drawing.Point(291, 189);
-            this.BookPagesValidation.Name = "BookPagesValidation";
-            this.BookPagesValidation.Size = new System.Drawing.Size(134, 17);
-            this.BookPagesValidation.TabIndex = 22;
-            this.BookPagesValidation.Text = "should be a number";
-            this.BookPagesValidation.Visible = false;
-            // 
-            // BookYearValidation
-            // 
-            this.BookYearValidation.AutoSize = true;
-            this.BookYearValidation.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.BookYearValidation.Location = new System.Drawing.Point(291, 240);
-            this.BookYearValidation.Name = "BookYearValidation";
-            this.BookYearValidation.Size = new System.Drawing.Size(190, 17);
-            this.BookYearValidation.TabIndex = 21;
-            this.BookYearValidation.Text = "the year should be a number";
-            this.BookYearValidation.Visible = false;
-            // 
-            // BookNameValidation
-            // 
-            this.BookNameValidation.AutoSize = true;
-            this.BookNameValidation.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.BookNameValidation.Location = new System.Drawing.Point(291, 138);
-            this.BookNameValidation.Name = "BookNameValidation";
-            this.BookNameValidation.Size = new System.Drawing.Size(218, 17);
-            this.BookNameValidation.TabIndex = 20;
-            this.BookNameValidation.Text = "the length should be less than 30";
-            this.BookNameValidation.Visible = false;
-            // 
-            // BookAuthorValidation
-            // 
-            this.BookAuthorValidation.AutoSize = true;
-            this.BookAuthorValidation.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.BookAuthorValidation.Location = new System.Drawing.Point(291, 86);
-            this.BookAuthorValidation.Name = "BookAuthorValidation";
-            this.BookAuthorValidation.Size = new System.Drawing.Size(210, 17);
-            this.BookAuthorValidation.TabIndex = 19;
-            this.BookAuthorValidation.Text = "the lengt should be less than 25";
-            this.BookAuthorValidation.Visible = false;
-            // 
-            // BookLabel
-            // 
-            this.BookLabel.AutoSize = true;
-            this.BookLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.8F, System.Drawing.FontStyle.Bold);
-            this.BookLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.BookLabel.Location = new System.Drawing.Point(174, 29);
-            this.BookLabel.Name = "BookLabel";
-            this.BookLabel.Size = new System.Drawing.Size(206, 31);
-            this.BookLabel.TabIndex = 17;
-            this.BookLabel.Text = "Add new book:";
-            // 
-            // BookAddButton
-            // 
-            this.BookAddButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BookAddButton.Location = new System.Drawing.Point(118, 500);
-            this.BookAddButton.Name = "BookAddButton";
-            this.BookAddButton.Size = new System.Drawing.Size(147, 38);
-            this.BookAddButton.TabIndex = 16;
-            this.BookAddButton.Text = "Add";
-            this.BookAddButton.UseVisualStyleBackColor = true;
-            this.BookAddButton.Click += new System.EventHandler(this.BookAddButton_Click);
-            // 
-            // BookCancel
-            // 
-            this.BookCancel.CausesValidation = false;
-            this.BookCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.BookCancel.Location = new System.Drawing.Point(294, 500);
-            this.BookCancel.Name = "BookCancel";
-            this.BookCancel.Size = new System.Drawing.Size(147, 38);
-            this.BookCancel.TabIndex = 15;
-            this.BookCancel.Text = "Cancel";
-            this.BookCancel.UseVisualStyleBackColor = true;
-            this.BookCancel.Click += new System.EventHandler(this.BookCancel_Click);
-            // 
-            // BookGenreLabel
-            // 
-            this.BookGenreLabel.AutoSize = true;
-            this.BookGenreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.BookGenreLabel.ForeColor = System.Drawing.Color.Snow;
-            this.BookGenreLabel.Location = new System.Drawing.Point(61, 358);
-            this.BookGenreLabel.Name = "BookGenreLabel";
-            this.BookGenreLabel.Size = new System.Drawing.Size(123, 26);
-            this.BookGenreLabel.TabIndex = 13;
-            this.BookGenreLabel.Text = "Book genre";
-            // 
-            // BookPriceLabel
-            // 
-            this.BookPriceLabel.AutoSize = true;
-            this.BookPriceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.BookPriceLabel.ForeColor = System.Drawing.Color.Snow;
-            this.BookPriceLabel.Location = new System.Drawing.Point(61, 306);
-            this.BookPriceLabel.Name = "BookPriceLabel";
-            this.BookPriceLabel.Size = new System.Drawing.Size(181, 26);
-            this.BookPriceLabel.TabIndex = 12;
-            this.BookPriceLabel.Text = "Price of the book:";
-            // 
-            // BookYearLabel
-            // 
-            this.BookYearLabel.AutoSize = true;
-            this.BookYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.BookYearLabel.ForeColor = System.Drawing.Color.Snow;
-            this.BookYearLabel.Location = new System.Drawing.Point(61, 257);
-            this.BookYearLabel.Name = "BookYearLabel";
-            this.BookYearLabel.Size = new System.Drawing.Size(193, 26);
-            this.BookYearLabel.TabIndex = 11;
-            this.BookYearLabel.Text = "Year of publishing:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.label7.ForeColor = System.Drawing.Color.Snow;
-            this.label7.Location = new System.Drawing.Point(61, 206);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(185, 26);
-            this.label7.TabIndex = 10;
-            this.label7.Text = "Number of pages:";
-            // 
-            // BookNameLabel
-            // 
-            this.BookNameLabel.AutoSize = true;
-            this.BookNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.BookNameLabel.ForeColor = System.Drawing.Color.Snow;
-            this.BookNameLabel.Location = new System.Drawing.Point(61, 157);
-            this.BookNameLabel.Name = "BookNameLabel";
-            this.BookNameLabel.Size = new System.Drawing.Size(129, 26);
-            this.BookNameLabel.TabIndex = 9;
-            this.BookNameLabel.Text = "Book name:";
-            // 
-            // BookAuthorLabel
-            // 
-            this.BookAuthorLabel.AutoSize = true;
-            this.BookAuthorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.BookAuthorLabel.ForeColor = System.Drawing.Color.Snow;
-            this.BookAuthorLabel.Location = new System.Drawing.Point(61, 110);
-            this.BookAuthorLabel.Name = "BookAuthorLabel";
-            this.BookAuthorLabel.Size = new System.Drawing.Size(143, 26);
-            this.BookAuthorLabel.TabIndex = 8;
-            this.BookAuthorLabel.Text = "Author name:";
-            // 
-            // BookGenre
-            // 
-            this.BookGenre.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.BookGenre.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.BookGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.BookGenre.Location = new System.Drawing.Point(294, 361);
-            this.BookGenre.Name = "BookGenre";
-            this.BookGenre.Size = new System.Drawing.Size(220, 25);
-            this.BookGenre.TabIndex = 5;
-            this.BookGenre.Validating += new System.ComponentModel.CancelEventHandler(this.BookGenre_Validating);
-            // 
-            // BookPrice
-            // 
-            this.BookPrice.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.BookPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.BookPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.BookPrice.Location = new System.Drawing.Point(294, 309);
-            this.BookPrice.Name = "BookPrice";
-            this.BookPrice.Size = new System.Drawing.Size(220, 25);
-            this.BookPrice.TabIndex = 4;
-            this.BookPrice.Validating += new System.ComponentModel.CancelEventHandler(this.BookPrice_Validating);
-            // 
-            // BookYear
-            // 
-            this.BookYear.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.BookYear.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.BookYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.BookYear.Location = new System.Drawing.Point(294, 260);
-            this.BookYear.Name = "BookYear";
-            this.BookYear.Size = new System.Drawing.Size(220, 25);
-            this.BookYear.TabIndex = 3;
-            this.BookYear.Validating += new System.ComponentModel.CancelEventHandler(this.BookYear_Validating);
-            // 
-            // BookPages
-            // 
-            this.BookPages.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.BookPages.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.BookPages.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.BookPages.Location = new System.Drawing.Point(294, 209);
-            this.BookPages.Name = "BookPages";
-            this.BookPages.Size = new System.Drawing.Size(220, 25);
-            this.BookPages.TabIndex = 2;
-            this.BookPages.Validating += new System.ComponentModel.CancelEventHandler(this.BookPages_Validating);
-            // 
-            // BookName
-            // 
-            this.BookName.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.BookName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.BookName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.BookName.Location = new System.Drawing.Point(294, 160);
-            this.BookName.Name = "BookName";
-            this.BookName.Size = new System.Drawing.Size(220, 25);
-            this.BookName.TabIndex = 1;
-            this.BookName.Validating += new System.ComponentModel.CancelEventHandler(this.BookName_Validating);
-            // 
-            // BookAuthor
-            // 
-            this.BookAuthor.BackColor = System.Drawing.SystemColors.ScrollBar;
-            this.BookAuthor.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.BookAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
-            this.BookAuthor.Location = new System.Drawing.Point(294, 110);
-            this.BookAuthor.Name = "BookAuthor";
-            this.BookAuthor.Size = new System.Drawing.Size(220, 25);
-            this.BookAuthor.TabIndex = 0;
-            this.BookAuthor.Validating += new System.ComponentModel.CancelEventHandler(this.BookAuthor_Validating);
             // 
             // MagazineFrequencyValidation
             // 
@@ -640,6 +379,267 @@ namespace BookShelf
             this.MagazineNumberValidation.TabIndex = 27;
             this.MagazineNumberValidation.Text = "should be a number";
             this.MagazineNumberValidation.Visible = false;
+            // 
+            // bookPanel
+            // 
+            this.bookPanel.CausesValidation = false;
+            this.bookPanel.Controls.Add(this.BookGenreValidation);
+            this.bookPanel.Controls.Add(this.BookCancel);
+            this.bookPanel.Controls.Add(this.BookPriceValidation);
+            this.bookPanel.Controls.Add(this.BookPagesValidation);
+            this.bookPanel.Controls.Add(this.BookYearValidation);
+            this.bookPanel.Controls.Add(this.BookNameValidation);
+            this.bookPanel.Controls.Add(this.BookAuthorValidation);
+            this.bookPanel.Controls.Add(this.BookLabel);
+            this.bookPanel.Controls.Add(this.BookAddButton);
+            this.bookPanel.Controls.Add(this.BookGenreLabel);
+            this.bookPanel.Controls.Add(this.BookPriceLabel);
+            this.bookPanel.Controls.Add(this.BookYearLabel);
+            this.bookPanel.Controls.Add(this.label7);
+            this.bookPanel.Controls.Add(this.BookNameLabel);
+            this.bookPanel.Controls.Add(this.BookAuthorLabel);
+            this.bookPanel.Controls.Add(this.BookGenre);
+            this.bookPanel.Controls.Add(this.BookPrice);
+            this.bookPanel.Controls.Add(this.BookYear);
+            this.bookPanel.Controls.Add(this.BookPages);
+            this.bookPanel.Controls.Add(this.BookName);
+            this.bookPanel.Controls.Add(this.BookAuthor);
+            this.bookPanel.Location = new System.Drawing.Point(146, 15);
+            this.bookPanel.Name = "bookPanel";
+            this.bookPanel.Size = new System.Drawing.Size(566, 561);
+            this.bookPanel.TabIndex = 18;
+            // 
+            // BookGenreValidation
+            // 
+            this.BookGenreValidation.AutoSize = true;
+            this.BookGenreValidation.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.BookGenreValidation.Location = new System.Drawing.Point(291, 341);
+            this.BookGenreValidation.Name = "BookGenreValidation";
+            this.BookGenreValidation.Size = new System.Drawing.Size(218, 17);
+            this.BookGenreValidation.TabIndex = 24;
+            this.BookGenreValidation.Text = "the length should be less than 15";
+            this.BookGenreValidation.Visible = false;
+            // 
+            // BookCancel
+            // 
+            this.BookCancel.CausesValidation = false;
+            this.BookCancel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BookCancel.Location = new System.Drawing.Point(294, 500);
+            this.BookCancel.Name = "BookCancel";
+            this.BookCancel.Size = new System.Drawing.Size(147, 38);
+            this.BookCancel.TabIndex = 15;
+            this.BookCancel.Text = "Cancel";
+            this.BookCancel.UseVisualStyleBackColor = true;
+            this.BookCancel.Click += new System.EventHandler(this.BookCancel_Click);
+            // 
+            // BookPriceValidation
+            // 
+            this.BookPriceValidation.AutoSize = true;
+            this.BookPriceValidation.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.BookPriceValidation.Location = new System.Drawing.Point(295, 289);
+            this.BookPriceValidation.Name = "BookPriceValidation";
+            this.BookPriceValidation.Size = new System.Drawing.Size(193, 17);
+            this.BookPriceValidation.TabIndex = 23;
+            this.BookPriceValidation.Text = "the price should be a number";
+            this.BookPriceValidation.Visible = false;
+            // 
+            // BookPagesValidation
+            // 
+            this.BookPagesValidation.AutoSize = true;
+            this.BookPagesValidation.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.BookPagesValidation.Location = new System.Drawing.Point(291, 189);
+            this.BookPagesValidation.Name = "BookPagesValidation";
+            this.BookPagesValidation.Size = new System.Drawing.Size(134, 17);
+            this.BookPagesValidation.TabIndex = 22;
+            this.BookPagesValidation.Text = "should be a number";
+            this.BookPagesValidation.Visible = false;
+            // 
+            // BookYearValidation
+            // 
+            this.BookYearValidation.AutoSize = true;
+            this.BookYearValidation.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.BookYearValidation.Location = new System.Drawing.Point(291, 240);
+            this.BookYearValidation.Name = "BookYearValidation";
+            this.BookYearValidation.Size = new System.Drawing.Size(190, 17);
+            this.BookYearValidation.TabIndex = 21;
+            this.BookYearValidation.Text = "the year should be a number";
+            this.BookYearValidation.Visible = false;
+            // 
+            // BookNameValidation
+            // 
+            this.BookNameValidation.AutoSize = true;
+            this.BookNameValidation.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.BookNameValidation.Location = new System.Drawing.Point(291, 138);
+            this.BookNameValidation.Name = "BookNameValidation";
+            this.BookNameValidation.Size = new System.Drawing.Size(218, 17);
+            this.BookNameValidation.TabIndex = 20;
+            this.BookNameValidation.Text = "the length should be less than 30";
+            this.BookNameValidation.Visible = false;
+            // 
+            // BookAuthorValidation
+            // 
+            this.BookAuthorValidation.AutoSize = true;
+            this.BookAuthorValidation.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.BookAuthorValidation.Location = new System.Drawing.Point(291, 86);
+            this.BookAuthorValidation.Name = "BookAuthorValidation";
+            this.BookAuthorValidation.Size = new System.Drawing.Size(210, 17);
+            this.BookAuthorValidation.TabIndex = 19;
+            this.BookAuthorValidation.Text = "the lengt should be less than 25";
+            this.BookAuthorValidation.Visible = false;
+            // 
+            // BookLabel
+            // 
+            this.BookLabel.AutoSize = true;
+            this.BookLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.8F, System.Drawing.FontStyle.Bold);
+            this.BookLabel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.BookLabel.Location = new System.Drawing.Point(174, 29);
+            this.BookLabel.Name = "BookLabel";
+            this.BookLabel.Size = new System.Drawing.Size(206, 31);
+            this.BookLabel.TabIndex = 17;
+            this.BookLabel.Text = "Add new book:";
+            // 
+            // BookAddButton
+            // 
+            this.BookAddButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.BookAddButton.Location = new System.Drawing.Point(118, 500);
+            this.BookAddButton.Name = "BookAddButton";
+            this.BookAddButton.Size = new System.Drawing.Size(147, 38);
+            this.BookAddButton.TabIndex = 16;
+            this.BookAddButton.Text = "Add";
+            this.BookAddButton.UseVisualStyleBackColor = true;
+            this.BookAddButton.Click += new System.EventHandler(this.BookAddButton_Click);
+            // 
+            // BookGenreLabel
+            // 
+            this.BookGenreLabel.AutoSize = true;
+            this.BookGenreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
+            this.BookGenreLabel.ForeColor = System.Drawing.Color.Snow;
+            this.BookGenreLabel.Location = new System.Drawing.Point(61, 358);
+            this.BookGenreLabel.Name = "BookGenreLabel";
+            this.BookGenreLabel.Size = new System.Drawing.Size(123, 26);
+            this.BookGenreLabel.TabIndex = 13;
+            this.BookGenreLabel.Text = "Book genre";
+            // 
+            // BookPriceLabel
+            // 
+            this.BookPriceLabel.AutoSize = true;
+            this.BookPriceLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
+            this.BookPriceLabel.ForeColor = System.Drawing.Color.Snow;
+            this.BookPriceLabel.Location = new System.Drawing.Point(61, 306);
+            this.BookPriceLabel.Name = "BookPriceLabel";
+            this.BookPriceLabel.Size = new System.Drawing.Size(181, 26);
+            this.BookPriceLabel.TabIndex = 12;
+            this.BookPriceLabel.Text = "Price of the book:";
+            // 
+            // BookYearLabel
+            // 
+            this.BookYearLabel.AutoSize = true;
+            this.BookYearLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
+            this.BookYearLabel.ForeColor = System.Drawing.Color.Snow;
+            this.BookYearLabel.Location = new System.Drawing.Point(61, 257);
+            this.BookYearLabel.Name = "BookYearLabel";
+            this.BookYearLabel.Size = new System.Drawing.Size(193, 26);
+            this.BookYearLabel.TabIndex = 11;
+            this.BookYearLabel.Text = "Year of publishing:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
+            this.label7.ForeColor = System.Drawing.Color.Snow;
+            this.label7.Location = new System.Drawing.Point(61, 206);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(185, 26);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Number of pages:";
+            // 
+            // BookNameLabel
+            // 
+            this.BookNameLabel.AutoSize = true;
+            this.BookNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
+            this.BookNameLabel.ForeColor = System.Drawing.Color.Snow;
+            this.BookNameLabel.Location = new System.Drawing.Point(61, 157);
+            this.BookNameLabel.Name = "BookNameLabel";
+            this.BookNameLabel.Size = new System.Drawing.Size(129, 26);
+            this.BookNameLabel.TabIndex = 9;
+            this.BookNameLabel.Text = "Book name:";
+            // 
+            // BookAuthorLabel
+            // 
+            this.BookAuthorLabel.AutoSize = true;
+            this.BookAuthorLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
+            this.BookAuthorLabel.ForeColor = System.Drawing.Color.Snow;
+            this.BookAuthorLabel.Location = new System.Drawing.Point(61, 110);
+            this.BookAuthorLabel.Name = "BookAuthorLabel";
+            this.BookAuthorLabel.Size = new System.Drawing.Size(143, 26);
+            this.BookAuthorLabel.TabIndex = 8;
+            this.BookAuthorLabel.Text = "Author name:";
+            // 
+            // BookGenre
+            // 
+            this.BookGenre.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.BookGenre.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BookGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
+            this.BookGenre.Location = new System.Drawing.Point(294, 361);
+            this.BookGenre.Name = "BookGenre";
+            this.BookGenre.Size = new System.Drawing.Size(220, 25);
+            this.BookGenre.TabIndex = 5;
+            this.BookGenre.Validating += new System.ComponentModel.CancelEventHandler(this.BookGenre_Validating);
+            // 
+            // BookPrice
+            // 
+            this.BookPrice.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.BookPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BookPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
+            this.BookPrice.Location = new System.Drawing.Point(294, 309);
+            this.BookPrice.Name = "BookPrice";
+            this.BookPrice.Size = new System.Drawing.Size(220, 25);
+            this.BookPrice.TabIndex = 4;
+            this.BookPrice.Validating += new System.ComponentModel.CancelEventHandler(this.BookPrice_Validating);
+            // 
+            // BookYear
+            // 
+            this.BookYear.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.BookYear.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BookYear.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
+            this.BookYear.Location = new System.Drawing.Point(294, 260);
+            this.BookYear.Name = "BookYear";
+            this.BookYear.Size = new System.Drawing.Size(220, 25);
+            this.BookYear.TabIndex = 3;
+            this.BookYear.Validating += new System.ComponentModel.CancelEventHandler(this.BookYear_Validating);
+            // 
+            // BookPages
+            // 
+            this.BookPages.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.BookPages.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BookPages.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
+            this.BookPages.Location = new System.Drawing.Point(294, 209);
+            this.BookPages.Name = "BookPages";
+            this.BookPages.Size = new System.Drawing.Size(220, 25);
+            this.BookPages.TabIndex = 2;
+            this.BookPages.Validating += new System.ComponentModel.CancelEventHandler(this.BookPages_Validating);
+            // 
+            // BookName
+            // 
+            this.BookName.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.BookName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BookName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
+            this.BookName.Location = new System.Drawing.Point(294, 160);
+            this.BookName.Name = "BookName";
+            this.BookName.Size = new System.Drawing.Size(220, 25);
+            this.BookName.TabIndex = 1;
+            this.BookName.Validating += new System.ComponentModel.CancelEventHandler(this.BookName_Validating);
+            // 
+            // BookAuthor
+            // 
+            this.BookAuthor.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.BookAuthor.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.BookAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.8F);
+            this.BookAuthor.Location = new System.Drawing.Point(294, 110);
+            this.BookAuthor.Name = "BookAuthor";
+            this.BookAuthor.Size = new System.Drawing.Size(220, 25);
+            this.BookAuthor.TabIndex = 0;
+            this.BookAuthor.Validating += new System.ComponentModel.CancelEventHandler(this.BookAuthor_Validating);
             // 
             // Insert
             // 
