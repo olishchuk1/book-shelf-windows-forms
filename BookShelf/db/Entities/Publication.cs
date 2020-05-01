@@ -4,14 +4,14 @@ using System.Text;
 
 namespace BookShelf.db.Entities
 {
-    abstract class Publication
+    public abstract class Publication
     {
-        public string author { get; set; }
-        public string name { get; set; }
-        public int numberOfPages { get; set; }
-        public int year { get; set; }
-        public double price { get; set; }
-        public int id { get; }
+        public string author;
+        public string name;
+        public int numberOfPages;
+        public int year;
+        public double price;
+        public int id;
         static int counter = 1;
         protected Publication()
         {
@@ -35,7 +35,20 @@ namespace BookShelf.db.Entities
             this.price = price;
             id = GenerateId();
         }
-
+        protected Publication(int id, 
+            string author,
+            string name,
+            int numberOfPages,
+            int year,
+            double price)
+        {
+            this.author = author;
+            this.name = name;
+            this.numberOfPages = numberOfPages;
+            this.year = year;
+            this.price = price;
+            this.id = id;
+        }
         protected Publication(Publication other)
         {
             author = other.author;

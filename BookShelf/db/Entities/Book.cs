@@ -4,9 +4,9 @@ using System.Text;
 
 namespace BookShelf.db.Entities
 {
-    class Book : Publication 
+    public class Book : Publication
     {
-        public string genre { get; set; }
+        public string genre;
 
         public Book()
         {
@@ -24,6 +24,15 @@ namespace BookShelf.db.Entities
             int year,
             double price,
             string genre): base(author, name, numberOfPages, year, price)
+        {
+            this.genre = genre;
+        }
+        public Book(int id, string author,
+            string name,
+            int numberOfPages,
+            int year,
+            double price,
+            string genre) : base(id, author, name, numberOfPages, year, price)
         {
             this.genre = genre;
         }

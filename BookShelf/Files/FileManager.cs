@@ -11,7 +11,7 @@ namespace BookShelf.Files
 {
     class FileManager
     {
-        public void SaveToFile(LinkedList<Book> bookList, LinkedList<Magazine> magazineList, String filename= ".\\default.txt")
+        public void SaveToFile(List<Book> bookList, List<Magazine> magazineList, String filename= ".\\default.txt")
         {
             using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.Write))
             using (StreamWriter sw = new StreamWriter(fs))
@@ -28,7 +28,7 @@ namespace BookShelf.Files
             MessageBox.Show("Saved");
         }
 
-        public void saveAsToFile(LinkedList<Book> bookList, LinkedList<Magazine> magazineList)
+        public void saveAsToFile(List<Book> bookList, List<Magazine> magazineList)
         {
             SaveFileDialog saveFileDialog1 = new SaveFileDialog();
             saveFileDialog1.Filter = "System File (*.txt) | *.txt";
@@ -54,10 +54,10 @@ namespace BookShelf.Files
             }
         }
 
-        public (LinkedList<Book>, LinkedList<Magazine>) OpenFile()
+        public (List<Book>, List<Magazine>) OpenFile()
         {
-            LinkedList<Book> books = new LinkedList<Book>();
-            LinkedList<Magazine> magazines = new LinkedList<Magazine>();
+            List<Book> books = new List<Book>();
+            List<Magazine> magazines = new List<Magazine>();
 
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "System File (*.txt) | *.txt";
@@ -73,11 +73,11 @@ namespace BookShelf.Files
                         string[] line = sr.ReadLine().Split(';');
                         if (line.Length == 7)
                         {
-                            magazines.AddLast(ConvertToMagazine(line));
+                            magazines.Add(ConvertToMagazine(line));
                         }
                         else
                         {
-                            books.AddLast(ConvertToBook(line));
+                            books.Add(ConvertToBook(line));
                         }
                     }
                     

@@ -48,6 +48,7 @@
             this.aboutAuthorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.BookShelfLabel = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Naming = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Pages = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,9 +64,23 @@
             this.ShowBooks = new System.Windows.Forms.Button();
             this.ShowAll = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.FilterPanel = new System.Windows.Forms.Panel();
+            this.ApplyFilterButton = new System.Windows.Forms.Button();
+            this.GenreCheckBox = new System.Windows.Forms.CheckBox();
+            this.NumberCheckBox = new System.Windows.Forms.CheckBox();
+            this.FrequencyCheckBox = new System.Windows.Forms.CheckBox();
+            this.PriceCheckBox = new System.Windows.Forms.CheckBox();
+            this.PagesCheckBox = new System.Windows.Forms.CheckBox();
+            this.NameCheckBox = new System.Windows.Forms.CheckBox();
+            this.AuthorCheckBox = new System.Windows.Forms.CheckBox();
+            this.CloseFilterLabel = new System.Windows.Forms.Label();
+            this.FilterLabel = new System.Windows.Forms.Label();
+            this.OpenFilterLabel = new System.Windows.Forms.Label();
+            this.Delete = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.FilterPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -235,6 +250,7 @@
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
             this.Author,
             this.Naming,
             this.Pages,
@@ -261,6 +277,13 @@
             this.dataGridView1.Size = new System.Drawing.Size(819, 353);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGridView1_CellContentClick);
+            // 
+            // ID
+            // 
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
             // 
             // Author
             // 
@@ -332,6 +355,7 @@
             this.Update.TabIndex = 4;
             this.Update.Text = "Update";
             this.Update.UseVisualStyleBackColor = true;
+            this.Update.Click += new System.EventHandler(this.Update_Click);
             // 
             // panel1
             // 
@@ -341,14 +365,14 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(10, 115);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 353);
+            this.panel1.Size = new System.Drawing.Size(186, 180);
             this.panel1.TabIndex = 5;
             // 
             // ShowMagazines
             // 
             this.ShowMagazines.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ShowMagazines.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ShowMagazines.Location = new System.Drawing.Point(3, 155);
+            this.ShowMagazines.Location = new System.Drawing.Point(0, 135);
             this.ShowMagazines.Name = "ShowMagazines";
             this.ShowMagazines.Size = new System.Drawing.Size(184, 38);
             this.ShowMagazines.TabIndex = 8;
@@ -360,7 +384,7 @@
             // 
             this.ShowBooks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ShowBooks.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.ShowBooks.Location = new System.Drawing.Point(3, 111);
+            this.ShowBooks.Location = new System.Drawing.Point(0, 91);
             this.ShowBooks.Name = "ShowBooks";
             this.ShowBooks.Size = new System.Drawing.Size(184, 38);
             this.ShowBooks.TabIndex = 7;
@@ -372,7 +396,7 @@
             // 
             this.ShowAll.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.ShowAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
-            this.ShowAll.Location = new System.Drawing.Point(3, 67);
+            this.ShowAll.Location = new System.Drawing.Point(0, 47);
             this.ShowAll.Name = "ShowAll";
             this.ShowAll.Size = new System.Drawing.Size(184, 38);
             this.ShowAll.TabIndex = 6;
@@ -385,11 +409,175 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.label1.Location = new System.Drawing.Point(24, 11);
+            this.label1.Location = new System.Drawing.Point(19, 19);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(149, 25);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nav Bar Menu";
+            // 
+            // FilterPanel
+            // 
+            this.FilterPanel.Controls.Add(this.ApplyFilterButton);
+            this.FilterPanel.Controls.Add(this.GenreCheckBox);
+            this.FilterPanel.Controls.Add(this.NumberCheckBox);
+            this.FilterPanel.Controls.Add(this.FrequencyCheckBox);
+            this.FilterPanel.Controls.Add(this.PriceCheckBox);
+            this.FilterPanel.Controls.Add(this.PagesCheckBox);
+            this.FilterPanel.Controls.Add(this.NameCheckBox);
+            this.FilterPanel.Controls.Add(this.AuthorCheckBox);
+            this.FilterPanel.Controls.Add(this.CloseFilterLabel);
+            this.FilterPanel.Controls.Add(this.FilterLabel);
+            this.FilterPanel.Location = new System.Drawing.Point(10, 301);
+            this.FilterPanel.Name = "FilterPanel";
+            this.FilterPanel.Size = new System.Drawing.Size(186, 256);
+            this.FilterPanel.TabIndex = 6;
+            this.FilterPanel.Visible = false;
+            // 
+            // ApplyFilterButton
+            // 
+            this.ApplyFilterButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ApplyFilterButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
+            this.ApplyFilterButton.Location = new System.Drawing.Point(22, 201);
+            this.ApplyFilterButton.Name = "ApplyFilterButton";
+            this.ApplyFilterButton.Size = new System.Drawing.Size(118, 38);
+            this.ApplyFilterButton.TabIndex = 15;
+            this.ApplyFilterButton.Text = "Apply";
+            this.ApplyFilterButton.UseVisualStyleBackColor = true;
+            // 
+            // GenreCheckBox
+            // 
+            this.GenreCheckBox.AutoSize = true;
+            this.GenreCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.GenreCheckBox.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.GenreCheckBox.Location = new System.Drawing.Point(22, 177);
+            this.GenreCheckBox.Name = "GenreCheckBox";
+            this.GenreCheckBox.Size = new System.Drawing.Size(82, 24);
+            this.GenreCheckBox.TabIndex = 14;
+            this.GenreCheckBox.Text = "Genre";
+            this.GenreCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // NumberCheckBox
+            // 
+            this.NumberCheckBox.AutoSize = true;
+            this.NumberCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NumberCheckBox.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.NumberCheckBox.Location = new System.Drawing.Point(22, 155);
+            this.NumberCheckBox.Name = "NumberCheckBox";
+            this.NumberCheckBox.Size = new System.Drawing.Size(96, 24);
+            this.NumberCheckBox.TabIndex = 12;
+            this.NumberCheckBox.Text = "Number";
+            this.NumberCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // FrequencyCheckBox
+            // 
+            this.FrequencyCheckBox.AutoSize = true;
+            this.FrequencyCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FrequencyCheckBox.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.FrequencyCheckBox.Location = new System.Drawing.Point(22, 133);
+            this.FrequencyCheckBox.Name = "FrequencyCheckBox";
+            this.FrequencyCheckBox.Size = new System.Drawing.Size(118, 24);
+            this.FrequencyCheckBox.TabIndex = 10;
+            this.FrequencyCheckBox.Text = "Frequency";
+            this.FrequencyCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // PriceCheckBox
+            // 
+            this.PriceCheckBox.AutoSize = true;
+            this.PriceCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PriceCheckBox.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.PriceCheckBox.Location = new System.Drawing.Point(22, 111);
+            this.PriceCheckBox.Name = "PriceCheckBox";
+            this.PriceCheckBox.Size = new System.Drawing.Size(75, 24);
+            this.PriceCheckBox.TabIndex = 8;
+            this.PriceCheckBox.Text = "Price";
+            this.PriceCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // PagesCheckBox
+            // 
+            this.PagesCheckBox.AutoSize = true;
+            this.PagesCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PagesCheckBox.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.PagesCheckBox.Location = new System.Drawing.Point(22, 89);
+            this.PagesCheckBox.Name = "PagesCheckBox";
+            this.PagesCheckBox.Size = new System.Drawing.Size(83, 24);
+            this.PagesCheckBox.TabIndex = 6;
+            this.PagesCheckBox.Text = "Pages";
+            this.PagesCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // NameCheckBox
+            // 
+            this.NameCheckBox.AutoSize = true;
+            this.NameCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.NameCheckBox.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.NameCheckBox.Location = new System.Drawing.Point(22, 67);
+            this.NameCheckBox.Name = "NameCheckBox";
+            this.NameCheckBox.Size = new System.Drawing.Size(79, 24);
+            this.NameCheckBox.TabIndex = 4;
+            this.NameCheckBox.Text = "Name";
+            this.NameCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // AuthorCheckBox
+            // 
+            this.AuthorCheckBox.AutoSize = true;
+            this.AuthorCheckBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AuthorCheckBox.ForeColor = System.Drawing.SystemColors.ScrollBar;
+            this.AuthorCheckBox.Location = new System.Drawing.Point(22, 45);
+            this.AuthorCheckBox.Name = "AuthorCheckBox";
+            this.AuthorCheckBox.Size = new System.Drawing.Size(86, 24);
+            this.AuthorCheckBox.TabIndex = 3;
+            this.AuthorCheckBox.Text = "Author";
+            this.AuthorCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // CloseFilterLabel
+            // 
+            this.CloseFilterLabel.AutoSize = true;
+            this.CloseFilterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.CloseFilterLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.CloseFilterLabel.Location = new System.Drawing.Point(161, 92);
+            this.CloseFilterLabel.Name = "CloseFilterLabel";
+            this.CloseFilterLabel.Size = new System.Drawing.Size(25, 25);
+            this.CloseFilterLabel.TabIndex = 2;
+            this.CloseFilterLabel.Text = "<";
+            this.CloseFilterLabel.Click += new System.EventHandler(this.CloseFilterLabel_Click);
+            this.CloseFilterLabel.MouseLeave += new System.EventHandler(this.CloseFilterLabel_MouseLeave);
+            this.CloseFilterLabel.MouseHover += new System.EventHandler(this.CloseFilterLabel_MouseHover);
+            // 
+            // FilterLabel
+            // 
+            this.FilterLabel.AutoSize = true;
+            this.FilterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.FilterLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.FilterLabel.Location = new System.Drawing.Point(61, 15);
+            this.FilterLabel.Name = "FilterLabel";
+            this.FilterLabel.Size = new System.Drawing.Size(60, 25);
+            this.FilterLabel.TabIndex = 1;
+            this.FilterLabel.Text = "Filter";
+            // 
+            // OpenFilterLabel
+            // 
+            this.OpenFilterLabel.AutoSize = true;
+            this.OpenFilterLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.OpenFilterLabel.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.OpenFilterLabel.Location = new System.Drawing.Point(5, 396);
+            this.OpenFilterLabel.Name = "OpenFilterLabel";
+            this.OpenFilterLabel.Size = new System.Drawing.Size(25, 25);
+            this.OpenFilterLabel.TabIndex = 15;
+            this.OpenFilterLabel.Text = ">";
+            this.OpenFilterLabel.Click += new System.EventHandler(this.OpenFilterLabel_Click);
+            this.OpenFilterLabel.MouseLeave += new System.EventHandler(this.OpenFilterLabel_MouseLeave);
+            this.OpenFilterLabel.MouseHover += new System.EventHandler(this.OpenFilterLabel_MouseHover);
+            // 
+            // Delete
+            // 
+            this.Delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.Delete.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.Delete.Location = new System.Drawing.Point(588, 500);
+            this.Delete.Name = "Delete";
+            this.Delete.Size = new System.Drawing.Size(147, 38);
+            this.Delete.TabIndex = 16;
+            this.Delete.Text = "Delete";
+            this.Delete.UseVisualStyleBackColor = true;
+            this.Delete.Click += new System.EventHandler(this.Delete_Click);
             // 
             // BookShelf
             // 
@@ -397,12 +585,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(39)))), ((int)(((byte)(34)))));
             this.ClientSize = new System.Drawing.Size(1062, 673);
+            this.Controls.Add(this.Delete);
+            this.Controls.Add(this.FilterPanel);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.Update);
             this.Controls.Add(this.AddNew);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.BookShelfLabel);
             this.Controls.Add(this.menuStrip);
+            this.Controls.Add(this.OpenFilterLabel);
             this.MainMenuStrip = this.menuStrip;
             this.Name = "BookShelf";
             this.Text = "Book Shelf";
@@ -412,6 +603,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            this.FilterPanel.ResumeLayout(false);
+            this.FilterPanel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -444,6 +637,20 @@
         private System.Windows.Forms.Button ShowBooks;
         private System.Windows.Forms.Button ShowAll;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel FilterPanel;
+        private System.Windows.Forms.Label FilterLabel;
+        private System.Windows.Forms.Label CloseFilterLabel;
+        private System.Windows.Forms.CheckBox GenreCheckBox;
+        private System.Windows.Forms.CheckBox NumberCheckBox;
+        private System.Windows.Forms.CheckBox FrequencyCheckBox;
+        private System.Windows.Forms.CheckBox PriceCheckBox;
+        private System.Windows.Forms.CheckBox PagesCheckBox;
+        private System.Windows.Forms.CheckBox NameCheckBox;
+        private System.Windows.Forms.CheckBox AuthorCheckBox;
+        private System.Windows.Forms.Label OpenFilterLabel;
+        private System.Windows.Forms.Button ApplyFilterButton;
+        private System.Windows.Forms.Button Delete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Author;
         private System.Windows.Forms.DataGridViewTextBoxColumn Naming;
         private System.Windows.Forms.DataGridViewTextBoxColumn Pages;

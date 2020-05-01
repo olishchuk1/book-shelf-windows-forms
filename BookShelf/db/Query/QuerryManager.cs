@@ -14,8 +14,8 @@ namespace BookShelf.db.Query
     class QueryManager
     {
         private SQLCon SQLCon;
-        private LinkedList<Book> booksList;
-        private LinkedList<Magazine> magazineList;
+        private List<Book> booksList;
+        private List<Magazine> magazineList;
         private NpgsqlCommand sqlCommand;
 
         public QueryManager(SQLCon sQL)
@@ -23,45 +23,46 @@ namespace BookShelf.db.Query
             SQLCon = sQL;
         }
 
-        public LinkedList<Book> SelectAllBooks()
+        public List<Book> SelectAllBooks()
         {
-            string sq = "SELECT author, name, pages, year, price, genre FROM \"Publication\" as t1 join \"Book\" as t2 on t1.id = t2.id;";
-            booksList = new LinkedList<Book>();
+            string sq = "SELECT t2.id, author, name, pages, year, price, genre FROM \"Publication\" as t1 join \"Book\" as t2 on t1.id = t2.id;";
+            booksList = new List<Book>();
             NpgsqlCommand sqlCommand = new NpgsqlCommand(sq, SQLCon.GetNpgsqlConnection());
             NpgsqlDataReader reader = sqlCommand.ExecuteReader();
             while (reader.Read())
             {
                 var book = new Book(
-                    reader.GetString(0), 
+                    reader.GetInt32(0),
                     reader.GetString(1), 
-                    reader.GetInt32(2), 
+                    reader.GetString(2), 
                     reader.GetInt32(3), 
-                    reader.GetFloat(4),
-                    reader.GetString(5));
-                booksList.AddLast(book);
+                    reader.GetInt32(4), 
+                    reader.GetFloat(5),
+                    reader.GetString(6));
+                booksList.Add(book);
                 //MessageBox.Show(book.ToString());
             }
             reader.Close();
             return booksList;
         }
 
-        public LinkedList<Magazine> SelectAllMagazines()
+        public List<Magazine> SelectAllMagazines()
         {
-            string sqlText = "SELECT author, name, pages, year, price, frequency, number  FROM \"Publication\" as t1 join \"Magazine\" as t2 on t1.id = t2.id;";
-            magazineList = new LinkedList<Magazine>();
+            string sqlText = "SELECT t2.id, author, name, pages, year, price, frequency, number  FROM \"Publication\" as t1 join \"Magazine\" as t2 on t1.id = t2.id;";
+            magazineList = new List<Magazine>();
             NpgsqlCommand sqlCommand = new NpgsqlCommand(sqlText, SQLCon.GetNpgsqlConnection());
             NpgsqlDataReader reader = sqlCommand.ExecuteReader();
             while (reader.Read())
             {
-                var magazine = new Magazine(
-                    reader.GetString(0),
+                var magazine = new Magazine(reader.GetInt32(0),
                     reader.GetString(1),
-                    reader.GetInt32(2),
+                    reader.GetString(2),
                     reader.GetInt32(3),
-                    reader.GetFloat(4),
-                    reader.GetInt32(5),
-                    reader.GetInt32(6));
-                magazineList.AddLast(magazine);
+                    reader.GetInt32(4),
+                    reader.GetFloat(5),
+                    reader.GetInt32(6),
+                    reader.GetInt32(7));
+                magazineList.Add(magazine);
                 //MessageBox.Show(magazine.ToString());
             }
             reader.Close();
@@ -107,6 +108,31 @@ namespace BookShelf.db.Query
                 rr.Close();
             }
         }
+        public void deleteBook(string id)
+        {
 
+            string[] queries = new string[] { string.Format("delete from \"Book\" where id = {0};", id),
+                string.Format("delete from \"Publication\" where id = {0};", id) };
+
+            foreach (var query in queries)
+            {
+                sqlCommand = new NpgsqlCommand(query, SQLCon.GetNpgsqlConnection());
+                NpgsqlDataReader rr = sqlCommand.ExecuteReader();
+                rr.Close();
+            }
+        }
+
+        public void deleteMagazine(string id)
+        {
+            string[] queries = new string[] { string.Format("delete from \"Magazine\" where id = {0};", id),
+                string.Format("delete from \"Publication\" where id = {0};", id) };
+
+            foreach (var query in queries)
+            {
+                sqlCommand = new NpgsqlCommand(query, SQLCon.GetNpgsqlConnection());
+                NpgsqlDataReader rr = sqlCommand.ExecuteReader();
+                rr.Close();
+            }
+        }
     }
 }

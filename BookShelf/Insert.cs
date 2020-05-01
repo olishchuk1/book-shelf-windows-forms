@@ -11,7 +11,19 @@ namespace BookShelf
     public partial class Insert : Form
     {
         SQLCon cnn = new SQLCon();
-        
+
+        public Insert(Book book)
+        {
+            InitializeComponent();
+            cnn.openConnection();
+            magazinePanel.Visible = true;
+        }
+        public Insert(Magazine magazine)
+        {
+            InitializeComponent();
+            cnn.openConnection();
+            bookPanel.Visible = false;
+        }
 
         public Insert(string flag)
         {

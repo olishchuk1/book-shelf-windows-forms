@@ -1,10 +1,11 @@
-Saundra Stoggles;Macario;605;2010;6115,78;Comedy
-Iris Ivanin;Klitschko;1561;1992;8577,43;Mystery
-Nydia Briddle;Spite Marriage;1584;1996;2384,65;Thriller
-Kristofor Hoodspeth;Let No Man Write My Epitaph;63;2007;9346,31;Action
-Sandy Isard;Densha otoko (Train Man);1019;2001;7053,66;Drama
-Mikaela Andrich;Unvanquished, The (Aparajito);1383;1995;3557,97;1;92
-Sadye Scaysbrook;Clash of the Wolves;1372;2012;6468,28;3;46
-Fidel Gerretsen;Danger! 50,000 Zombies;1505;2000;5687,03;5;23
-Ardene Netley;Criminal Code, The;1292;2008;5342,99;8;95
-Fredek McMorran;Good Woman, A;1966;2003;4317,67;3;64
+Saundra Stoggles;Macario;605;2010;6115,77978515625;Comedy
+Iris Ivanin;Klitschko;1561;1992;8577,4296875;Mystery
+Nydia Briddle;Spite Marriage;1584;1996;2384,64990234375;Thriller
+Kristofor Hoodspeth;Let No Man Write My Epitaph;63;2007;9346,3095703125;Action
+Sandy Isard;Densha otoko (Train Man);1019;2001;7053,66015625;Drama
+abc;def;123;456;789;0
+Mikaela Andrich;Unvanquished, The (Aparajito);1383;1995;3557,96997070313;1;92
+Sadye Scaysbrook;Clash of the Wolves;1372;2012;6468,27978515625;3;46
+Fidel Gerretsen;Danger! 50,000 Zombies;1505;2000;5687,02978515625;5;23
+Ardene Netley;Criminal Code, The;1292;2008;5342,990234375;8;95
+Fredek McMorran;Good Woman, A;1966;2003;4317,669921875;3;64

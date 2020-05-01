@@ -18,6 +18,9 @@ namespace BookShelf
 {
     public partial class BookShelf : Form
     {
+        List<Book> books;
+        List<Magazine> magazines;
+
         public SQLCon cnn = new SQLCon();
 
         public BookShelf()
@@ -45,7 +48,7 @@ namespace BookShelf
             helloButton.ForeColor = Color.DarkGray;
             helloButton.Location = new Point(10, 10);
             helloButton.Text = "Привет";
-            this.Controls.Add(helloButton);
+            Controls.Add(helloButton);
         }
 
         private void FileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -71,24 +74,25 @@ namespace BookShelf
             dataGridView1.Columns["Genre"].Visible = true;
 
             dataGridView1.Rows.Clear();
-            LinkedList<Book> books = new QueryManager(cnn).SelectAllBooks();
-            LinkedList<Magazine> magazines = new QueryManager(cnn).SelectAllMagazines();
+            books = new QueryManager(cnn).SelectAllBooks();
+            magazines = new QueryManager(cnn).SelectAllMagazines();
             foreach (var book in books)
             {
-                string[] rowStrings = new string[8];
-                rowStrings[0] = book.author.ToString();
-                rowStrings[1] = book.name.ToString();
-                rowStrings[2] = book.numberOfPages.ToString();
-                rowStrings[3] = book.year.ToString();
-                rowStrings[4] = book.price.ToString();
-                rowStrings[5] = " ";
+                string[] rowStrings = new string[9];
+                rowStrings[0] = book.id.ToString();
+                rowStrings[1] = book.author.ToString();
+                rowStrings[2] = book.name.ToString();
+                rowStrings[3] = book.numberOfPages.ToString();
+                rowStrings[4] = book.year.ToString();
+                rowStrings[5] = book.price.ToString();
                 rowStrings[6] = " ";
-                rowStrings[7] = book.genre.ToString();
+                rowStrings[7] = " ";
+                rowStrings[8] = book.genre.ToString();
                 dataGridView1.Rows.Add(rowStrings);
             }
             foreach (var magazine in magazines)
             {
-                dataGridView1.Rows.Add(magazine.ToString().Split(';'));
+                dataGridView1.Rows.Add((magazine.id.ToString() + ";" + magazine.ToString()).Split(';'));
             }
         }
         private void ShowAll_Click(object sender, EventArgs e)
@@ -103,18 +107,19 @@ namespace BookShelf
             dataGridView1.Columns["Genre"].Visible = true;
 
             dataGridView1.Rows.Clear();
-            LinkedList<Book> books = new QueryManager(cnn).SelectAllBooks();
+            books = new QueryManager(cnn).SelectAllBooks();
             foreach (var book in books)
             {
-                string[] rowStrings = new string[8];
-                rowStrings[0] = book.author.ToString();
-                rowStrings[1] = book.name.ToString();
-                rowStrings[2] = book.numberOfPages.ToString();
-                rowStrings[3] = book.year.ToString();
-                rowStrings[4] = book.price.ToString();
-                rowStrings[5] = " ";
+                string[] rowStrings = new string[9];
+                rowStrings[0] = book.id.ToString();
+                rowStrings[1] = book.author.ToString();
+                rowStrings[2] = book.name.ToString();
+                rowStrings[3] = book.numberOfPages.ToString();
+                rowStrings[4] = book.year.ToString();
+                rowStrings[5] = book.price.ToString();
                 rowStrings[6] = " ";
-                rowStrings[7] = book.genre.ToString();
+                rowStrings[7] = " ";
+                rowStrings[8] = book.genre.ToString();
                 dataGridView1.Rows.Add(rowStrings);
                 //dataGridView1.Rows.Add(book.ToString().Split('\t'));
 
@@ -127,13 +132,10 @@ namespace BookShelf
             dataGridView1.Columns["Frequency"].Visible = true;
             dataGridView1.Columns["Genre"].Visible = false;
             dataGridView1.Rows.Clear();
-            LinkedList<Magazine> magazines = new QueryManager(cnn).SelectAllMagazines();
+            magazines = new QueryManager(cnn).SelectAllMagazines();
             foreach (var magazine in magazines)
             {
-                dataGridView1.Rows.Add(magazine.ToString().Split(';'));
-
-
-
+                dataGridView1.Rows.Add((magazine.id.ToString() +";"+ magazine.ToString()).Split(';'));
             }
         }
 
@@ -168,16 +170,16 @@ namespace BookShelf
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LinkedList<Book> books = new QueryManager(cnn).SelectAllBooks();
-            LinkedList<Magazine> magazines = new QueryManager(cnn).SelectAllMagazines();
+            books = new QueryManager(cnn).SelectAllBooks();
+            magazines = new QueryManager(cnn).SelectAllMagazines();
 
             new FileManager().SaveToFile(books, magazines);
         }
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            LinkedList<Book> books = new QueryManager(cnn).SelectAllBooks();
-            LinkedList<Magazine> magazines = new QueryManager(cnn).SelectAllMagazines();
+            books = new QueryManager(cnn).SelectAllBooks();
+            magazines = new QueryManager(cnn).SelectAllMagazines();
 
             new FileManager().saveAsToFile(books, magazines);
         }
@@ -186,7 +188,7 @@ namespace BookShelf
         {
             new QueryManager(cnn).clearTables();
             QueryManager queryManager = new QueryManager(cnn);
-            (LinkedList<Book> books, LinkedList<Magazine> magazines) = new FileManager().OpenFile();
+            (books, magazines) = new FileManager().OpenFile();
             foreach (var book in books)
             {
                 queryManager.Insert(book);
@@ -206,6 +208,93 @@ namespace BookShelf
 
         }
 
+        private void CloseFilterLabel_Click(object sender, EventArgs e)
+        {
+            FilterPanel.Visible = false;
+        }
 
+        private void OpenFilterLabel_Click(object sender, EventArgs e)
+        {
+            FilterPanel.Visible = true;
+        }
+
+        private void CloseFilterLabel_MouseHover(object sender, EventArgs e)
+        {
+            CloseFilterLabel.ForeColor = Color.DimGray;
+        }
+
+        private void OpenFilterLabel_MouseHover(object sender, EventArgs e)
+        {
+            OpenFilterLabel.ForeColor = Color.DimGray;
+        }
+
+        private void OpenFilterLabel_MouseLeave(object sender, EventArgs e)
+        {
+            OpenFilterLabel.ForeColor = Color.WhiteSmoke;
+        }
+
+        private void CloseFilterLabel_MouseLeave(object sender, EventArgs e)
+        {
+            CloseFilterLabel.ForeColor = Color.WhiteSmoke;
+        }
+
+        private void Delete_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dataGridView1.CurrentRow;
+            string id = row.Cells["ID"].Value.ToString();
+            QueryManager queryManager = new QueryManager(cnn);
+
+            if (isBook(id))
+            {
+                queryManager.deleteBook(id);
+            }
+            else
+            {
+                queryManager.deleteMagazine(id);
+            }
+            ShowPublications();
+        }
+        private bool isBook(string id)
+        {
+            return books.Exists(x => x.id.ToString().Equals(id));
+        }
+
+        private bool isOffice(string id)
+        {
+            return magazines.Exists(x => x.id.ToString().Equals(id));
+        }
+
+        private Book GetBook(string id)
+        {
+            return books.Where(x => x.id == int.Parse(id)).First();
+        }
+
+        private Magazine GetMagazine(string id)
+        {
+            return magazines.Where(x => x.id == int.Parse(id)).First();
+        }
+
+        private void Update_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dataGridView1.CurrentRow;
+            string id = row.Cells["ID"].Value.ToString();
+            QueryManager queryManager = new QueryManager(cnn);
+
+            if (isBook(id))
+            {
+                //queryManager.deleteBook(id);
+                Book book = GetBook(id);
+                Insert insertForm = new Insert(book);
+                insertForm.Show();
+            }
+            else
+            {
+                //queryManager.deleteMagazine(id);
+                Magazine magazine = GetMagazine(id);
+                Insert insertForm = new Insert(magazine);
+                insertForm.Show();
+            }
+            ShowPublications();
+        }
     }
 }

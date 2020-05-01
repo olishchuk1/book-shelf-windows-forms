@@ -4,10 +4,10 @@ using System.Text;
 
 namespace BookShelf.db.Entities
 {
-    class Magazine : Publication
+    public class Magazine : Publication
     {
-        public int frequency { get; set; }
-        public int number { get; set; }
+        public int frequency;
+        public int number;
 
         public Magazine()
         {
@@ -28,6 +28,18 @@ namespace BookShelf.db.Entities
             double price,
             int frequency,
             int number) : base(author, name, numberOfPages, year, price)
+        {
+            this.frequency = frequency;
+            this.number = number;
+        }
+
+        public Magazine(int id, string author,
+            string name,
+            int numberOfPages,
+            int year,
+            double price,
+            int frequency,
+            int number) : base(id, author, name, numberOfPages, year, price)
         {
             this.frequency = frequency;
             this.number = number;
