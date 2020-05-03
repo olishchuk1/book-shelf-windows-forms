@@ -61,7 +61,6 @@ namespace BookShelf
                 new QueryManager(cnn).Insert(book);
                 
             }
-            new BookShelf().ShowPublications();
             Close();
         }
 
