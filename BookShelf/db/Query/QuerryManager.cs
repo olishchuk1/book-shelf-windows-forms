@@ -84,7 +84,8 @@ namespace BookShelf.db.Query
         public void Update(Book book)
         {
             string[] queries = new string[] {
-                String.Format("UPDATE \"Publication\" SET author='{0}', name='{1}', year={2}, pages={3}, price={4} WHERE id={5};", book.author, book.name, book.year, book.numberOfPages, book.price.ToString().Replace(',', '.'), book.id),
+                String.Format("UPDATE \"Publication\" SET author='{0}', name='{1}', year={2}, pages={3}, price={4} WHERE id={5};", 
+                    book.author, book.name, book.year, book.numberOfPages, book.price.ToString().Replace(',', '.'), book.id),
                 String.Format("UPDATE \"Book\" SET genre='{1}' WHERE id={0};", book.id, book.genre)};
             foreach (var query in queries)
             {
@@ -98,7 +99,8 @@ namespace BookShelf.db.Query
         public void Update(Magazine magazine)
         {
             string[] queries = new string[] {
-                String.Format("UPDATE \"Publication\" SET author='{0}', name='{1}', year={2}, pages={3}, price={4} WHERE id = {5};", magazine.author, magazine.name, magazine.year, magazine.numberOfPages, magazine.price.ToString().Replace(',', '.'), magazine.id),
+                String.Format("UPDATE \"Publication\" SET author='{0}', name='{1}', year={2}, pages={3}, price={4} WHERE id = {5};", 
+                    magazine.author, magazine.name, magazine.year, magazine.numberOfPages, magazine.price.ToString().Replace(',', '.'), magazine.id),
                 String.Format("UPDATE \"Magazine\" SET number={1}, frequency={2} WHERE id={0};", magazine.id, magazine.number, magazine.frequency)};
             foreach (var query in queries)
             {
@@ -111,7 +113,8 @@ namespace BookShelf.db.Query
         public void Insert(Book book)
         {
             string[] queries = new string[] {
-                String.Format("insert into \"Publication\" (id, author, name, year, pages, price) values({0}, '{1}', '{2}', {3}, {4}, {5});", book.id, book.author, book.name, book.year, book.numberOfPages, book.price.ToString().Replace(',', '.')),
+                String.Format("insert into \"Publication\" (id, author, name, year, pages, price) values({0}, '{1}', '{2}', {3}, {4}, {5});", 
+                    book.id, book.author, book.name, book.year, book.numberOfPages, book.price.ToString().Replace(',', '.')),
                 String.Format("insert into \"Book\"(id, genre) values({0}, '{1}');", book.id, book.genre)};
 
             foreach (var query in queries)
@@ -125,8 +128,10 @@ namespace BookShelf.db.Query
         public void Insert(Magazine magazine)
         {
             string[] queries = new string[] {
-                String.Format("insert into \"Publication\" (id, author, name, year, pages, price) values({0}, '{1}', '{2}', {3}, {4}, {5});", magazine.id, magazine.author, magazine.name, magazine.year, magazine.numberOfPages, magazine.price.ToString().Replace(',', '.')),
-                String.Format("insert into \"Magazine\"(id, number, frequency) values ({0}, {1}, {2});", magazine.id, magazine.number, magazine.frequency)};
+                String.Format("insert into \"Publication\" (id, author, name, year, pages, price) values({0}, '{1}', '{2}', {3}, {4}, {5});", 
+                    magazine.id, magazine.author, magazine.name, magazine.year, magazine.numberOfPages, magazine.price.ToString().Replace(',', '.')),
+                String.Format("insert into \"Magazine\"(id, number, frequency) values ({0}, {1}, {2});", 
+                    magazine.id, magazine.number, magazine.frequency)};
 
             foreach (var query in queries)
             {

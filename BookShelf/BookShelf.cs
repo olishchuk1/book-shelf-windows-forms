@@ -32,7 +32,7 @@ namespace BookShelf
 
         private void ExitTItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -42,21 +42,10 @@ namespace BookShelf
 
         private void BookShelf_Load(object sender, EventArgs e)
         {
-            //TODO: ADD LOADER (PROGRESS BAR)
-            Button helloButton = new Button();
-            helloButton.BackColor = Color.LightGray;
-            helloButton.ForeColor = Color.DarkGray;
-            helloButton.Location = new Point(10, 10);
-            helloButton.Text = "Привет";
-            Controls.Add(helloButton);
+
         }
 
         private void FileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Database1DataSetBindingSource_CurrentChanged(object sender, EventArgs e)
         {
 
         }
@@ -153,7 +142,7 @@ namespace BookShelf
 
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
         private void AboutAuthorToolStripMenuItem_Click(object sender, EventArgs e)

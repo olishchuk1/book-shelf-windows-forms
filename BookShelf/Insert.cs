@@ -10,7 +10,7 @@ namespace BookShelf
 
     public partial class Insert : Form
     {
-        SQLCon cnn = new SQLCon();
+        private SQLCon cnn = new SQLCon();
         Book book = new Book();
         Magazine magazine = new Magazine();
         public Insert(Book book)
