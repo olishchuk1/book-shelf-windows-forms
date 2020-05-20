@@ -45,11 +45,6 @@ namespace BookShelf
 
         }
 
-        private void FileToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void Button1_Click(object sender, EventArgs e)
         {
             PreInsert preinsertform = new PreInsert();
@@ -58,6 +53,11 @@ namespace BookShelf
 
         public void ShowPublications()
         {
+            dataGridView1.Columns["Author"].Visible = true;
+            dataGridView1.Columns["Naming"].Visible = true;
+            dataGridView1.Columns["Pages"].Visible = true;
+            dataGridView1.Columns["Year"].Visible = true;
+            dataGridView1.Columns["Price"].Visible = true;
             dataGridView1.Columns["Number"].Visible = true;
             dataGridView1.Columns["Frequency"].Visible = true;
             dataGridView1.Columns["Genre"].Visible = true;
@@ -69,21 +69,23 @@ namespace BookShelf
             {
                 string[] rowStrings = new string[9];
                 rowStrings[0] = book.id.ToString();
-                rowStrings[1] = book.author.ToString();
-                rowStrings[2] = book.name.ToString();
+                rowStrings[1] = book.author;
+                rowStrings[2] = book.name;
                 rowStrings[3] = book.numberOfPages.ToString();
                 rowStrings[4] = book.year.ToString();
                 rowStrings[5] = book.price.ToString();
                 rowStrings[6] = " ";
                 rowStrings[7] = " ";
-                rowStrings[8] = book.genre.ToString();
+                rowStrings[8] = book.genre;
                 dataGridView1.Rows.Add(rowStrings);
             }
+
             foreach (var magazine in magazines)
             {
                 dataGridView1.Rows.Add((magazine.id.ToString() + ";" + magazine.ToString()).Split(';'));
             }
         }
+
         private void ShowAll_Click(object sender, EventArgs e)
         {
             ShowPublications();
@@ -91,6 +93,11 @@ namespace BookShelf
 
         private void ShowBooks_Click(object sender, EventArgs e)
         {
+            dataGridView1.Columns["Author"].Visible = true;
+            dataGridView1.Columns["Naming"].Visible = true;
+            dataGridView1.Columns["Pages"].Visible = true;
+            dataGridView1.Columns["Year"].Visible = true;
+            dataGridView1.Columns["Price"].Visible = true;
             dataGridView1.Columns["Number"].Visible = false;
             dataGridView1.Columns["Frequency"].Visible = false;
             dataGridView1.Columns["Genre"].Visible = true;
@@ -117,6 +124,11 @@ namespace BookShelf
 
         private void ShowMagazines_Click(object sender, EventArgs e)
         {
+            dataGridView1.Columns["Author"].Visible = true;
+            dataGridView1.Columns["Naming"].Visible = true;
+            dataGridView1.Columns["Pages"].Visible = true;
+            dataGridView1.Columns["Year"].Visible = true;
+            dataGridView1.Columns["Price"].Visible = true;
             dataGridView1.Columns["Number"].Visible = true;
             dataGridView1.Columns["Frequency"].Visible = true;
             dataGridView1.Columns["Genre"].Visible = false;
@@ -124,7 +136,7 @@ namespace BookShelf
             magazines = new QueryManager(cnn).SelectAllMagazines();
             foreach (var magazine in magazines)
             {
-                dataGridView1.Rows.Add((magazine.id.ToString() +";"+ magazine.ToString()).Split(';'));
+                dataGridView1.Rows.Add((magazine.id.ToString() + ";" + magazine.ToString()).Split(';'));
             }
         }
 
@@ -194,7 +206,8 @@ namespace BookShelf
 
         private void CreateNewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            new QueryManager(cnn).clearTables();
+            ShowPublications();
         }
 
         private void CloseFilterLabel_Click(object sender, EventArgs e)
@@ -241,8 +254,10 @@ namespace BookShelf
             {
                 queryManager.deleteMagazine(id);
             }
+
             ShowPublications();
         }
+
         private bool isBook(string id)
         {
             return books.Exists(x => x.id.ToString().Equals(id));
@@ -271,19 +286,62 @@ namespace BookShelf
 
             if (isBook(id))
             {
-                //queryManager.deleteBook(id);
                 Book book = GetBook(id);
                 Insert insertForm = new Insert(book);
                 insertForm.Show();
             }
             else
             {
-                //queryManager.deleteMagazine(id);
                 Magazine magazine = GetMagazine(id);
                 Insert insertForm = new Insert(magazine);
                 insertForm.Show();
             }
+
             ShowPublications();
+        }
+
+        private void ApplyFilterButton_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Columns["Author"].Visible = AuthorCheckBox.Checked;
+            dataGridView1.Columns["Naming"].Visible = NameCheckBox.Checked;
+            dataGridView1.Columns["Pages"].Visible = PagesCheckBox.Checked;
+            dataGridView1.Columns["Year"].Visible = YearCheckBox.Checked;
+            dataGridView1.Columns["Price"].Visible = PriceCheckBox.Checked;
+            dataGridView1.Columns["Frequency"].Visible = FrequencyCheckBox.Checked;
+            dataGridView1.Columns["Number"].Visible = NumberCheckBox.Checked;
+            dataGridView1.Columns["Genre"].Visible = GenreCheckBox.Checked;
+        }
+
+        private void DataGridView1_SortCompare(object sender, DataGridViewSortCompareEventArgs e)
+        {
+            try
+            {
+                if (int.TryParse(e.CellValue1.ToString(), out _))
+                {
+                    try
+                    {
+                        int a = int.Parse(e.CellValue1.ToString()), b = int.Parse(e.CellValue2.ToString());
+                        e.SortResult = a.CompareTo(b);
+                        e.Handled = true;
+                    }
+                    catch (Exception exception)
+                    {
+                        e.SortResult = 1;
+                    }
+
+                }
+                else if (double.TryParse(e.CellValue1.ToString(), out _))
+                {
+                    double a = double.Parse(e.CellValue1.ToString()), b = double.Parse(e.CellValue2.ToString());
+                    e.SortResult = a.CompareTo(b);
+                    e.Handled = true;
+                }
+
+            }
+            catch (Exception exception)
+            {
+                e.SortResult = 1;
+            }
         }
     }
 }
